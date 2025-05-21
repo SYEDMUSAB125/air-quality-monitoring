@@ -17,6 +17,7 @@ import {
 } from "chart.js";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
+import { useAirQualityReadings } from "./context/data";
 
 // Register ChartJS components
 ChartJS.register(
@@ -54,6 +55,11 @@ export default function AirQualityDashboard() {
   const [showMap, setShowMap] = useState(false);
   const [locationName, setLocationName] = useState("Fetching location...");
   const [mapReady, setMapReady] = useState(false);
+  
+const {readings} = useAirQualityReadings()
+
+
+console.log(readings)
 
   // Fix for Leaflet marker icons in Next.js
   useEffect(() => {
